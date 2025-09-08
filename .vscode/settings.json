@@ -1,19 +1,6 @@
 {
     "deno.enable": true,
     "deno.lint": true,
-    "editor.defaultFormatter": "denoland.vscode-deno",
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "denoland.vscode-deno"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "denoland.vscode-deno"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "denoland.vscode-deno"
-    },
     "css.customData": [
         ".vscode/tailwind.json"
     ],
@@ -21,5 +8,5 @@
         "HTTP_PROXY": "http://localhost:7890",
         "HTTPS_PROXY": "http://localhost:7890",
     },
-    "iis.configDir": ""
+    "iis.configDir": "",
 }
