@@ -36,9 +36,9 @@ export async function get_blog_source(
     for await (const entry of walk(path, {
         maxDepth: 2,
         includeFiles: true,
-        exts: [".md"],
+        exts: [".html"],
     })) {
-        if (entry.name === `${blog_title}.md`) {
+        if (entry.name === `${blog_title}.html`) {
             return await Deno.readTextFile(entry.path);
         }
     }

@@ -22,7 +22,6 @@
     ],
     "imports": {
         "$fresh/": "https://deno.land/x/fresh@1.7.3/",
-        "@deno/gfm": "jsr:@deno/gfm@^0.11.0",
         "preact": "https://esm.sh/preact@10.22.0",
         "preact/": "https://esm.sh/preact@10.22.0/",
         "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
@@ -31,8 +30,7 @@
         "tailwindcss/": "npm:/tailwindcss@3.4.1/",
         "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
         "$std/": "https://deno.land/std@0.216.0/",
-        "daisyui": "npm:daisyui@^5.1.8",
-        "markdown-it": "npm:markdown-it@^14.1.0"
+        "daisyui": "npm:daisyui@^5.1.8"
     },
     "compilerOptions": {
         "jsx": "react-jsx",

@@ -1,33 +1,60 @@
 // routes/blog/[blog_name].tsx
 import { FreshContext, PageProps } from "$fresh/server.ts";
-import markdownit from "markdown-it";
 import { get_blog_source } from "../../utils/blog.ts";
 import { Head } from "$fresh/runtime.ts";
-import { CSS } from "@deno/gfm";
-
-const md = markdownit();
+import { DOMParser, Element } from "jsr:@b-fuze/deno-dom";
 
 export const handler = async (_req: Request, ctx: FreshContext) => {
     const title = decodeURIComponent(ctx.params.blog_name);
-    const origin_data = await get_blog_source(title);
-    const body = md.render(origin_data);
-    return ctx.render({ title, body });
+    const data = await get_blog_source(title);
+    return ctx.render({ title, data });
 };
 
 export default function BlogPage(
-    props: PageProps<{ title: string; body: string }>
+    props: PageProps<{ title: string; data: string }>
 ) {
-    const body = props.data.body;
+    const doc = new DOMParser().parseFromString(props.data.data, "text/html");
+    const head_styles = Array.from(doc.querySelectorAll("head style")).map(
+        (style) => style.outerHTML
+    );
+
+    const head_meta = Array.from(doc.querySelectorAll("head meta")).map(
+        (meta) => meta.outerHTML
+    );
+    const head_links = Array.from(doc.querySelectorAll("head link")).map(
+        (link) => link.outerHTML
+    );
+
+    const bodyContent = doc.querySelector("body")?.innerHTML || "";
+
     return (
-        <html class="mx-auto max-w-screen-md flex flex-col items-center min-h-screen">
+        <>
             <Head>
-                <style dangerouslySetInnerHTML={{ __html: CSS }} />
+                <title>{props.data.title}</title>
+                {head_meta.map((meta, index) => (
+                    <div
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: meta }}
+                    />
+                ))}
+                {head_links.map((link, index) => (
+                    <div
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: link }}
+                    />
+                ))}
+                {head_styles.map((style, index) => (
+                    <div
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: style }}
+                    />
+                ))}
             </Head>
+
             <article
-                class="markdown-body"
-                dangerouslySetInnerHTML={{
-                    __html: body,
-                }}></article>
-        </html>
+                class="text-white max-w-screen-lg mx-auto flex flex-col items-center justify-center"
+                dangerouslySetInnerHTML={{ __html: bodyContent }}
+            />
+        </>
     );
 }
