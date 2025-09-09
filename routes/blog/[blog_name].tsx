@@ -52,7 +52,7 @@ export default function BlogPage(
             </Head>
 
             <article
-                class="text-white max-w-screen-lg mx-auto flex flex-col items-center justify-center"
+                class=" text-white lg:max-w-screen-lg lg:items-center lg:justify-center md:max-w-screen-lg mx-auto flex flex-col "
                 dangerouslySetInnerHTML={{ __html: bodyContent }}
             />
         </>
