@@ -3,27 +3,19 @@ import { delay } from "$std/async/delay.ts";
 import { BlogDesc } from "../interfaces/blog_desc.ts";
 
 /**
- * 获得对应语言文件夹内的所有笔记的描述文件，它应该是一个`.json`
+ * 获得对某一个语言的博客的目录，它应该是一个`manifest.json`
+ * 此`manifest.json`应当在应用的`build`阶段被生成
  * 这是一个服务端函数，不能在组件中被调用
- *
  */
 export async function get_blogs_desc(
     lang: "zh" | "cn" = "zh"
 ): Promise<BlogDesc[]> {
     const path = `${Deno.cwd()}/data/${lang}`;
-    const json_files = [];
     const blog_des = [];
-    for await (const entry of walk(path, {
-        maxDepth: 2,
-        includeFiles: true,
-        exts: [".json"],
-    })) {
-        json_files.push(entry);
-    }
-    for (const jf of json_files) {
-        const text_fmt = await Deno.readTextFile(jf.path);
-        const json_fmt: BlogDesc = JSON.parse(text_fmt);
-        blog_des.push(json_fmt);
+    const manifest = await Deno.readTextFile(`${path}/manifest.json`);
+    const manifest_json:BlogDesc[] = JSON.parse(manifest);
+    for (const desc of manifest_json) {
+        blog_des.push(desc);
     }
     return blog_des;
 }

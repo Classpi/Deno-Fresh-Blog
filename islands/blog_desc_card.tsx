@@ -4,11 +4,16 @@ export default function BlogDescCard({ desc }: { desc: BlogDesc }) {
     return (
         <div class="mb-16">
             <article>
-                <a
-                    class="mb-1 card-title link link-hover text-2xl "
-                    href={`/blog/${desc.title}`}>
-                    {desc.title}
-                </a>
+                <div class="flex items-center mb-1">
+                    <a
+                        class="mb-1 card-title link link-hover text-2xl flex-1"
+                        href={`/blog/${desc.title}`}>
+                        {desc.title}
+                    </a>
+                    <span class="text-xs text-gray-200 align-middle">
+                        {desc.time}
+                    </span>
+                </div>
 
                 <p class="mb-2">
                     {desc.keywords.map((k) => (

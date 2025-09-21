@@ -2,7 +2,8 @@
 import { FreshContext, PageProps } from "$fresh/server.ts";
 import { get_blog_source } from "../../utils/blog.ts";
 import { Head } from "$fresh/runtime.ts";
-import { DOMParser, Element } from "jsr:@b-fuze/deno-dom";
+// deno-lint-ignore no-unversioned-import
+import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
 export const handler = async (_req: Request, ctx: FreshContext) => {
     const title = decodeURIComponent(ctx.params.blog_name);
