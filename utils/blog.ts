@@ -45,7 +45,7 @@ Deno.test("get_blogs_data", async () => {
 
 Deno.test("get_blog_source", async () => {
     const dirs = await get_blog_source(
-        "利用类型擦除和来实现高性能的任意类型的错误处理"
+        "[Rust]Anyhow库是如何利用类型擦除来实现高性能的任意类型的错误处理的🤯"
     );
     await delay(500);
     console.log(dirs);
