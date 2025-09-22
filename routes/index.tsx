@@ -1,6 +1,6 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { BlogDesc } from "../interfaces/blog_desc.ts";
-import BlogDescCard from "../islands/blog_desc_card.tsx";
+import SearchBar from "../islands/search_bar.tsx";
 import { get_blogs_desc } from "../utils/blog.ts";
 
 let dataLoadPromise: Promise<BlogDesc[]> | null = null;
@@ -28,22 +28,13 @@ export default function Home(props: PageProps<BlogDesc[]>) {
                     height="1080"
                     alt="the Fresh logo: a sliced lemon dripping with juice"
                     style={{
-                        maskImage:
-                            "linear-gradient(to top, black 80%, transparent 100%)",
-                        WebkitMaskImage:
-                            "linear-gradient(to top, black 80%, transparent 100%)",
+                        maskImage: "linear-gradient(to top, black 80%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(to top, black 80%, transparent 100%)",
                     }}
                 />
-                <h1 class="text-4xl font-black font-sans tracking-widest">
-                    Exstyty的博客
-                </h1>
-
-                <section class="py-20">
-                    {props.data.map((desc) => (
-                        <BlogDescCard
-                            desc={desc}
-                            key={desc.title}></BlogDescCard>
-                    ))}
+                <h1 class="text-4xl font-black font-sans tracking-widest">Exstyty的博客</h1>
+                <section>
+                    <SearchBar blogs={props.data} />
                 </section>
             </div>
         </div>

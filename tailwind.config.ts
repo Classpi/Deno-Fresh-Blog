@@ -11,4 +11,8 @@ export default {
         },
     },
     plugins: [daisyui],
+    disyui: {
+        themes: ["light", "dark", "cupcake"],
+        defaultTheme: "dark", // 设置默认主题
+    },
 } satisfies Config;

@@ -1,4 +1,4 @@
-import { walk, walkSync } from "$std/fs/walk.ts";
+import { walk } from "$std/fs/walk.ts";
 import { delay } from "$std/async/delay.ts";
 import { BlogDesc } from "../interfaces/blog_desc.ts";
 

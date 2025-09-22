@@ -11,6 +11,7 @@ import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $blog_desc_card from "./islands/blog_desc_card.tsx";
+import * as $search_bar from "./islands/search_bar.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -26,6 +27,7 @@ const manifest = {
   islands: {
     "./islands/Counter.tsx": $Counter,
     "./islands/blog_desc_card.tsx": $blog_desc_card,
+    "./islands/search_bar.tsx": $search_bar,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

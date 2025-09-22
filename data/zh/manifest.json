@@ -12,7 +12,7 @@
     "preface": "带你一起探索Cpp虚表的魔力"
   },
   {
-    "title": "[Rust] Anyhow库是如何利用类型擦除来实现高性能的任意类型的错误处理的🤯",
+    "title": "[Rust]Anyhow库是如何利用类型擦除来实现高性能的任意类型的错误处理的🤯",
     "time": 20250701,
     "keywords": [
       "Rust",
