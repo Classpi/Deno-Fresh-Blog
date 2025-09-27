@@ -5,7 +5,7 @@ import { Head } from "fresh/runtime";
 // import { DOMParser } from "jsr:@b-fuze/deno-dom/wasm-noinit"; //似乎要在构建时使用它作为过渡?
 // import { DOMParser } from "jsr:@b-fuze/deno-dom";
 // deno-lint-ignore no-unversioned-import
-import { DOMParser } from "jsr:@b-fuze/deno-dom/native"
+import { DOMParser } from "jsr:@b-fuze/deno-dom/native";
 
 import { BlogDesc } from "../../interfaces/blog_desc.ts";
 
@@ -50,7 +50,24 @@ export default function BlogPage(
           <div key={index} dangerouslySetInnerHTML={{ __html: style }} />
         ))}
       </Head>
-
+      {/* 行内公式正确显示 */}
+      {/* 块级公式正确居中 */}
+      {/* 题注正确margin */}
+      <style>
+        {`mjx-container {
+            display: inline-block;
+            vertical-align: middle !important;
+          }
+          .md-math-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5em 0;
+            overflow-x: auto;
+          }
+          center {
+            margin-top: 1rem;
+          }`}
+      </style>
       <article
         class=" text-white lg:max-w-screen-lg lg:items-center lg:justify-center md:max-w-screen-lg mx-auto flex flex-col "
         // deno-lint-ignore react-no-danger
